@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<title> Gerador de Chaves </title>
+		<script>
+			//var 	numeros = new Array(1,2,3,4,5);
+			var		numeros;
+			var 	estrelas;
+			
+			const	NN = 5;
+			const   NE = 2;
+			const   MINN = 1;
+			const 	MAXN = 50;
+			const	MINE = 1;
+			const	MAXE = 11;
+
+			function gerachave() {
+				
+				numeros= new Array();
+				//1 fazer NN vezes
+				for(var i=0; i < NN; i++) {
+				// 1.1. gerar um numero entre MINN e MAXN
+				var onum = Math.floor(Math.random()*MAXN + MINN);
+
+				// 1.2. colocar no array numeros
+				// numeros[i] = onum;
+				numeros.push(onum);
+			}
+			
+			alert(numeros);
+
+
+				// escreve chave
+				// alert(numeros);
+
+				// 1- identificar o elemento contentor
+				contentor = document.getElementById("chaves");
+				// 2- criar a lista de numeros com class = numeros
+				alistan = document.createElement("ul");
+				alistan.setAttribute("class","numeros");
+
+				// 3- para cada numero
+				for(var i=0; i < numeros.length; i++) {
+					// 	3.1 -  criar item da lista
+					var oitem = document.createElement("li");
+
+					//  3.2 - fazer conteudo igual ao numero
+					oitem.innerHTML = numeros[i];
+
+					//  3.3 - adicionar o item à lista
+					alistan.appendChild(oitem);
+				}
+			
+				// 4- adicionar a lista ao contentor
+				contentor.appendChild(alistan);
+
+				
+
+
+
+				//alert(estrelas);
+			}
+
+			// gera 1 numero aleatorio entre 'min' e 'max'
+
+
+			
+		</script>
+	</head>
+	<body>
+		<input type="button" value="Gera Chave" onclick="gerachave();"/>
+		<div id="chaves"></div>
+	</body>
+</html>
