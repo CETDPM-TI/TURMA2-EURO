@@ -1,0 +1,120 @@
+<html>
+	<head>
+		<style>
+			/* folha de estilos */
+			ul li {
+				font-size: 30px;
+				font-family: "Verdana, sans-serif";
+				font-weight: bold;
+				text-align: center;
+				display: inline-block;
+				width : 50px;
+				height: 50px;
+				border-radius: 5px;
+				border-style: solid;
+				border-width: 1px;
+				border-color: black;
+				margin :5px;
+				}
+
+			ul.numeros li{
+				background-color: gold;
+				color: navy;
+				}
+
+			ul.estrelas li {
+				background-color: lime;
+				color: black;
+				}
+
+
+		</style>
+
+		<title> Gerador de Chaves </title>
+		<script>
+			//var 	numeros = new Array(1,2,3,4,5);
+			var		numeros;
+			var 	estrelas;
+			
+			const	NN = 5;
+			const   NE = 2;
+			const   MINN = 1;
+			const 	MAXN = 50;
+			const	MINE = 1;
+			const	MAXE = 11;
+
+			const   NUMN = MAXN - MINN + 1;
+			const   NUME = MAXE - MINE + 1;
+
+			function gerachave() {
+
+				numeros= new Array();
+				numeros = extracao(NN,MINN,MAXN);
+				//alert(numeros);
+
+				estrelas = new Array();
+				estrelas = extracao(NE,MINE,MAXE);
+				//alert(estrelas);
+
+
+				
+
+
+
+				// 1- identificar o elemento contentor
+				contentor = document.getElementById("chaves");
+				// criar o div para uma chave
+				divchave = document.createElement("div");
+				afixachave(divchave,numeros,"numeros");
+				afixachave(divchave,estrelas,"estrelas");
+				contentor.appendChild(divchave);
+
+
+
+				function extracao(n,min,max) {
+					// criar uma tombola vazia
+					var tombola = new Array();
+					var sorteio = new Array();
+					// encher a tombola
+					for (var i=min; i<=max ; i++) {
+						tombola.push(i);
+					}
+					// sorteio de n elementos
+					for (var i=0; i<n; i++) {
+					   var pos = Math.floor(Math.random()*(tombola.length));
+					   	sorteio.push(tombola[pos]);
+					   	tombola.splice(pos,1);
+					}
+					return sorteio;
+				}
+
+
+				function afixachave(div,sorteio,nomedaclasse) {
+					alista = document.createElement("ul");
+					alista.setAttribute("class",nomedaclasse);
+
+					for(var i=0; i < sorteio.length; i++) {
+					// 	3.1 -  criar item da lista
+					var oitem = document.createElement("li");
+
+					//  3.2 - fazer conteudo igual ao numero
+					oitem.innerHTML = sorteio[i];
+
+					//  3.3 - adicionar o item à lista
+					alista.appendChild(oitem);
+					}
+					div.appendChild(alista);
+
+				}
+
+			}
+
+
+			
+		</script>
+	</head>
+	<body>
+		<input type="button" value="Gera Chave" onclick="gerachave();"/>
+		<div id="chaves"></div>
+	</body>
+</html>
