@@ -1,0 +1,54 @@
+
+<!-- saved from url=(0059)http://localhost/CETDPM1314/CETDPM2/euromilhoes/demojq.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<style>
+		p {color:red;}
+		#p001 {color:blue;}
+	</style>
+	<script src="./demojq2_files/jquery-1.11.0.js"></script>
+	<script>
+	
+	$(document).ready(iniciar)
+
+	function iniciar() {
+		//document.getElementById("p001").innerHTML = "novo texto";
+		$("p").html("novo texto");
+		$(".red").css("color","red");
+		$(".blue").css("color","blue");
+		$(".green").css("color","green");
+		$("p.green").css("color","orange");
+
+		$("p").click( function () { 
+			alert($(this).css("color"))
+			if ($(this).css("color") == "rgb(255,0,0)") {
+				$(this).css("color","green");
+			} else {
+				$(this).css("color","blue");
+			} 
+		});
+
+	}
+
+	function xxxxx(evento) {
+		$(this).hide();
+	}
+	
+	</script> 
+</head>
+<body>
+	
+	<p class="red" id="p001" style="color: red;">novo texto</p>
+	<p class="red" id="p002" style="color: red;">novo texto</p>
+	<p class="green" id="p003" style="color: orange;">novo texto</p>
+	<p class="green" id="p004" style="color: orange;">novo texto</p>
+
+	<h3 class="green" style="color: green;"> coisa </h3>
+	<h3 class="green" style="color: green;"> coisa </h3>
+	<h3 class="red" style="color: red;"> coisa </h3>
+	<h3 class="blue" style="color: blue;"> coisa </h3>
+	
+	<input type="button" id="escreve" value="escreve">
+	
+
+
+</body></html>

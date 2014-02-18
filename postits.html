@@ -1,0 +1,58 @@
+<html>
+<head>
+	<style>
+		.postit {
+			position: absolute;
+			width : 65px;
+			height : 80px;
+			background-color:yellow;
+		}
+	</style>
+	<script src="jquery/jquery-1.11.0.js"></script>
+	<script>
+	
+	$(document).ready(iniciar)
+
+	function iniciar() {
+		//alert("ola");
+		
+		$("#escreve").click(escrevebu);
+		
+		$("body").click( function (evento) {
+			$("#coordenadas").html("x: "+evento.pageX+ "; y: "+ evento.pageY);
+			novodiv = $("<div/>");
+			novodiv.addClass("postit");
+			novodiv.css("left",evento.pageX);
+			novodiv.css("top",evento.pageY);
+			novodiv.html($("#texto").val());
+			$("body").append(novodiv);
+			novodiv.click(desaparece);
+		});
+	}
+
+	function desaparece(evento) {
+		$(this).hide(3000);
+		evento.stopImmediatePropagation()
+	}
+	function escrevebu() {
+
+		if ($("#texto").val().length >= 3) {
+			$("#zona_dos_bus").append($("<h1/>").html($("#texto").val()));
+		} else {
+			alert("ó palerma! "+$("#texto").val()+" é a tua tia!");
+		}
+		$("#texto").val("");
+	}
+	
+	
+	</script> 
+</head>
+<body>
+		
+	<input type="text" id="texto">
+	<input type="button" id="escreve" value="escreve"/>
+	<div id ="coordenadas"></div>
+	<div id="zona_dos_bus"></div>
+
+</body>
+</html>
